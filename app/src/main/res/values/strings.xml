@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MVVMRetrofitWeather</string>
+    <string name="label_add_city">Add City</string>
+    <string name="tv_low">Low</string>
+    <string name="tv_humidity">Humidity</string>
+    <string name="tv_pressure">Pressure</string>
+    <string name="tv_high">High</string>
+    <string name="hint_city">Enter city name here</string>
+</resources>

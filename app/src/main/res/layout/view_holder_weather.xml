@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="city"
+            type="com.example.mvvmretrofitweather.model.data.WeatherResponse"/>
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <TextView
+        android:gravity="center"
+        android:textSize="@dimen/_25"
+        android:paddingVertical="@dimen/_25"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@{city.name}"
+        android:id="@+id/tv_name"/>
+
+    <TextView
+        android:gravity="center"
+        android:textSize="@dimen/_50"
+        android:paddingTop="@dimen/_50"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        android:text="@{Double.toString(city.main.temp) + `℉`}"
+        android:id="@+id/tv_temp"/>
+
+    <TextView
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_temp"
+        android:text="@{`Feels like ` + Double.toString(city.main.feels_like) + `℉`}"
+        android:id="@+id/tv_feels_like"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardCornerRadius="@dimen/_15"
+        android:layout_margin="@dimen/_15">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_high_title"
+                android:text="@string/tv_low"
+                android:id="@+id/tv_low_title"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_15"
+                app:layout_constraintTop_toBottomOf="@id/tv_low_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_high_value"
+                android:textSize="@dimen/_25"
+                android:text="@{Double.toString(city.main.temp_min) + `℉`}"
+                android:id="@+id/tv_low_value"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_15"
+                app:layout_constraintTop_toBottomOf="@id/tv_low_value"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_pressure_title"
+                android:text="@string/tv_humidity"
+                android:id="@+id/tv_humidity_title"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_15"
+                app:layout_constraintTop_toBottomOf="@id/tv_humidity_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_pressure_value"
+                android:textSize="@dimen/_25"
+                android:text="@{Integer.toString(city.main.humidity) + `%`}"
+                android:id="@+id/tv_humidity_value"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_low_title"
+                android:gravity="end"
+                android:text="@string/tv_high"
+                android:id="@+id/tv_high_title"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_15"
+                app:layout_constraintTop_toBottomOf="@id/tv_low_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_low_value"
+                android:gravity="end"
+                android:textSize="@dimen/_25"
+                android:text="@{Double.toString(city.main.temp_max) + `℉`}"
+                android:id="@+id/tv_high_value"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_15"
+                app:layout_constraintTop_toBottomOf="@id/tv_high_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_humidity_title"
+                android:gravity="end"
+                android:text="@string/tv_pressure"
+                android:id="@+id/tv_pressure_title"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/_15"
+                app:layout_constraintTop_toBottomOf="@id/tv_pressure_title"
+                app:layout_constraintStart_toEndOf="@id/tv_humidity_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="end"
+                android:textSize="@dimen/_25"
+                android:text="@{Integer.toString(city.main.pressure) + ` PSI`}"
+                android:id="@+id/tv_pressure_value"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
